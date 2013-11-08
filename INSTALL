@@ -1,0 +1,18 @@
+To build and install MPASATOGRADS.exe:
+
+(1) Link/copy ./scripts/compile.csh to top-level directory (i.e., mpasatograds)
+(2) Edit ./configure/configure.mpasatograds, specifically:
+    (a) F90
+    (b) LD
+    (c) F77
+    (d) FCFFLAGS
+    (e) NETCDFPATH
+
+    *NOTE* This MPASATOGRADS.exe executable has only been built and
+     tested using the INTEL ifort compiler.
+(3) In top-level directory, do:
+
+    > ./compile.csh
+
+    If successful, MPASATOGRADS.exe will be built in top-level directory.
+

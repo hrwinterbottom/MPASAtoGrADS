@@ -1,0 +1,55 @@
+&fileio
+variable_filename = '<mpas_filename>', # This is the full-path to the MPAS-A output file (note the quotations); this file may not contain more than one output time
+debug             = .false.            # Logical variable indicating whether executable should dump debug information
+/
+
+&variableio
+is_smooth = .true.,                    # Logical variable indicating whether to smooth derived and native variables according to spectral truncation specified by user (below)
+                                       # Example variables available via routine
+is_cori   = .true.,                    # Coriolis parameter (1/s)
+is_psfc   = .true.,                    # Surface pressure (Pa)
+is_pslp   = .true.,                    # Sea-level pressure (Pa)
+is_u10m   = .true.,                    # 10-meter above ground level (AGL) zonal wind (m/s)
+is_v10m   = .true.,                    # 10-meter AGL meridional wind (m/s)
+is_t2m    = .true.,                    # 2-meter AGL temperature (K)
+is_sst    = .true.,                    # Sea-surface temperature (K)
+is_ter    = .true.,                    # Orography height (m)
+is_uwnd   = .true.,                    # Zonal wind profile (m/s)
+is_vwnd   = .true.,                    # Meridional wind profile (m/s)
+is_vort   = .true.,                    # Vorticity profile (1/s)
+is_divg   = .true.,                    # Divergence profile (1/s)
+is_rh     = .true.,                    # Relative humidity profile (%)
+is_qv     = .true.,                    # Water vapor mixing ratio profile (kg/kg)
+is_temp   = .true.,                    # Temperature profile (K)
+is_vtemp  = .true.,                    # Virtual temperature profile (K)
+is_theta  = .true.,                    # Potential temperature profile (K)
+is_thetae = .true.,                    # Equivalent potential temperature profile (K)
+is_psi    = .true.,                    # Streamfunction profile (m^2/s)
+is_chi    = .true.,                    # Velocity potential profile (m^2/s)
+is_pwat   = .true.,                    # Precipitable water (cm)
+is_pv     = .true.,                    # Potential vorticity profile (PVU)
+is_dbz    = .true.,                    # Simulated radar reflectivity profile (dBz)
+is_cdbz   = .true.,                    # Simulated composite radar reflectivity profile (dBz)
+is_ght    = .true.,                    # Geopotential height profile (gpm)
+/
+
+&interpio
+grid_mtrunc       = 62                 # Spectral trunction for Gaussian (i.e., GrADS) grid; currently available spectral truncations are T62, T126, T254, T382, and T574
+barnes_nneighbors = 50                 # Number of nearest neighbors for Barnes analysis
+barnes_npasses    = 3                  # Number of passes for Barnes filter
+/
+
+&pinterpio
+is_pinterp = .false.,                  # Logical variable indicating whether to interpolate profile variables to user specified isobaric levels
+plevs      = 1000,900,800,500,200,     # Isobaric levels for interpolation (hPa); maximum number of levels is 100
+/
+
+&zinterpio
+is_zinterp = .false.,                  # Logical variable indicating whether to interpolate profile variables to user specified geometric heights
+zlevs      = 10.0,25.0,50.0,100.0,     # Geometric heights for interpolation (m); maximum number of levels is 100 
+/
+
+&teinterpio
+is_teinterp =.true.,                   # Logical variable indicating whether to interpolate profile variables to user specified equivalent potential temperature surfaces 
+televs      = 300.0,350.0,400.0,1000.0 # Equivalent potential temperature surfaces for interpolation (K); maximum number of levels is 100
+/
